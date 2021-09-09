@@ -1,5 +1,4 @@
 import React, { useState } from 'react'; 
-import './NavBar.css';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText, Button } from 'reactstrap';
 import CartWigdet from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
