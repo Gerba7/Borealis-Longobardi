@@ -63,11 +63,26 @@ align-items: center;
   padding: 4px 4px 4px 4px;
   width: 40px;
   height: 40px; 
+  margin-left: 15px;
 }
 
 .cartplus {
-  width: 200px; 
-  margin-left: 535px;   
+  width: 200px;
+  margin-left: 20px;    
+}
+
+
+/*Item*/
+
+.beerCard {
+  width: 18rem;
+  margin: auto;
+  margin-top: 200px;
+  background-color: white;
+  border-radius: 5%;
+  color: black;
+  align-items: center;
+  text-align: center;
 }
 
 

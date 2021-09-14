@@ -23,7 +23,7 @@ const ItemCount = ({stock, initial}) => {
 
     return(
         <div className="container">
-            <h1 className="text-center mt-5">{count}</h1>
+            <h5 className="text-center mt-5">{count}</h5>
             <button className="btn count btn-danger" onClick={restar}>-</button>
             <button className="btn count btn-success" onClick={sumar}>+</button>
             <div>
