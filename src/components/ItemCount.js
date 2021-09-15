@@ -26,10 +26,8 @@ const ItemCount = ({stock, initial}) => {
             <h5 className="text-center mt-5">{count}</h5>
             <button className="btn count btn-danger" onClick={restar}>-</button>
             <button className="btn count btn-success" onClick={sumar}>+</button>
-            <div>
             <button className="btn cartplus btn-primary" onClick={() => setCount(0)}>Agregar al carrito</button>
-            </div>
-            <p className="text-center">Apurate! solo quedan: {stock - count}</p>
+            <p className="stock text-center">Apurate! Solo quedan: {stock - count}</p>
         </div>
     );
 

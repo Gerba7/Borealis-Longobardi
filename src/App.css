@@ -1,5 +1,5 @@
 .App {
-  background-image: url(./assets/2.jpg);
+  background-image: url(./2.jpg);
   background-size: cover;
   min-height: 100vh;
   font-size: 20px;
@@ -64,11 +64,20 @@ align-items: center;
   width: 40px;
   height: 40px; 
   margin-left: 15px;
+  margin-bottom: 0;
 }
 
 .cartplus {
   width: 200px;
-  margin-left: 20px;    
+  margin-left: 20px;
+  margin-bottom: 5px;    
+}
+
+.stock {
+  font-size: small;
+  font-weight: 500;
+  color: #136821;
+  /*color: #1EA234;*/
 }
 
 
@@ -77,12 +86,21 @@ align-items: center;
 .beerCard {
   width: 18rem;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 100px;
   background-color: white;
   border-radius: 5%;
   color: black;
   align-items: center;
   text-align: center;
+  display: inline-block;
+  justify-content: center;
+  margin-left: 5rem;
+}
+
+.beerCard img {
+  width: 100%;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
 }
 
 
