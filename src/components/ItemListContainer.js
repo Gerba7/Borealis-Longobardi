@@ -15,7 +15,7 @@ const beers = [
         title: 'Irish Ale',
         price: '$270',
         description: '',
-        pictureUrl: './assets/cerveza-standard.png',
+        pictureUrl: '/assets/cerveza-standard.png',
         stock: 20,
     },
     {
@@ -23,7 +23,7 @@ const beers = [
         title: 'Imperial Stout',
         price: '$290',
         description: '',
-        pictureUrl: './assets/cerveza-standard.png',
+        pictureUrl: '/assets/cerveza-standard.png',
         stock: 12,
     },
     {
@@ -31,7 +31,7 @@ const beers = [
         title: 'Heffeweisen',
         price: '$230',
         description: '',
-        pictureUrl: './assets/cerveza-standard.png',
+        pictureUrl: '/assets/cerveza-standard.png',
         stock: 23,
     }
 ]
@@ -44,8 +44,9 @@ const getProducts = () => {
 }
 
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 
+    
     const [listBeer, setListBeer] = useState([])
 
     useEffect(() => {
@@ -57,20 +58,17 @@ const ItemListContainer = (props) => {
         })
     }, [])
 
+    if(listBeer.length === 0) {
+        return <h1>Loading . . .</h1>
+    }
+
     return(
         <div>
             <ItemList beers={listBeer} />
         </div>
     )
 
-    /*return(
-        <div className="container">
-            <h1 className="mt-5 text-center" id="greeting">Hello</h1>
-            <h1 className="mt-5 text-center" id="greeting2">{props.name}!</h1>
-            <ItemCount stock="25" initial="0" />
-            <ItemList />
-        </div>        
-    );*/
+    
     
 }
 

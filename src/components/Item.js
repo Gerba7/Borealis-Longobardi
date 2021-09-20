@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 
@@ -11,7 +12,7 @@ const Item = ({beer}) => {
             <img src={beer.pictureUrl} alt={beer.title} />
             <div>
                 <h5>{beer.title}</h5>
-                <button className="btn btn-dark">Ver detalle</button>
+                <Link key={beer.id} to={`/itemlist/${beer.id}`} activeClassName="navLink" className="Option"><button className="btn btn-dark">Ver detalle</button></Link>
             </div>
         </div>
         

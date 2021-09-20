@@ -2,8 +2,14 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = ({details}) => {
 
-    return(
+    if(!details) {
+        return(
+            <h1>Loading . . .</h1>
+        )
+    }
 
+    return(
+        
         <div className="beerCard">
             <img src={details.pictureUrl} alt={details.title} />
             <div>
@@ -13,7 +19,6 @@ const ItemDetail = ({details}) => {
             </div>
             <ItemCount stock={details.stock} initial="0"/>
         </div>
-
     )
 
 }

@@ -1,4 +1,5 @@
     import { useState, useEffect } from "react";
+    import { useParams } from 'react-router-dom';
     import ItemDetail from './ItemDetail';
 
 
@@ -16,7 +17,7 @@
             title: 'Irish Ale',
             price: '$270',
             description: '',
-            pictureUrl: './assets/cerveza-standard.png',
+            pictureUrl: '/assets/cerveza-standard.png',
             stock: 20,
         },
         {
@@ -24,7 +25,7 @@
             title: 'Imperial Stout',
             price: '$290',
             description: '',
-            pictureUrl: './assets/cerveza-standard.png',
+            pictureUrl: '/assets/cerveza-standard.png',
             stock: 12,
         },
         {
@@ -32,35 +33,48 @@
             title: 'Heffeweisen',
             price: '$230',
             description: '',
-            pictureUrl: './assets/cerveza-standard.png',
+            pictureUrl: '/assets/cerveza-standard.png',
             stock: 23,
         }
     ]
 
+    
+
     const getItem = () => {
         return new Promise((resolve) => {
-            setTimeout(() => resolve(beers), 2000);
-        })
+            setTimeout(() => resolve(beers), 2000)
+        });
     }
 
 
     const ItemDetailContainer = () => {
 
+        const { id } = useParams();
         const [itemDetail, setItemDetail] = useState([])
+        
 
         useEffect(() => {
 
-            const item = getItem();
-
+            const item = getItem()
             item.then(result => {
-                console.log(result);
-                setItemDetail(result);
+            const itemDetail = result.find(prod => prod.id === parseInt(id))
+            setItemDetail(itemDetail)
             })
+            return(() => {
+                setItemDetail(undefined)
+            })
+        }, [id])
 
-        }, [])
+        if(!itemDetail) {
+            return(
+                <h1>Loading . . .</h1>
+            )
+        }
 
         return(
-            <ItemDetail details={itemDetail} />
+            <div>
+                <ItemDetail details={itemDetail} />
+            </div>
         )
             
             

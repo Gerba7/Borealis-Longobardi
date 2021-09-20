@@ -1,3 +1,8 @@
+* {
+  font-family: 'Gugi', sans-serif;
+
+}
+
 .App {
   background-image: url(./2.jpg);
   background-size: cover;
@@ -6,8 +11,14 @@
   color: white;
 }
 
+h1{
+  text-align: center;
+  margin-top: 40px;
+  align-self: auto;
+}
+
 .container {
-  margin: auto;
+  margin: auto
 }
 
 
@@ -20,6 +31,7 @@ font-size: 16px;
 padding: 10px 10px 10px 10px;
 border-radius: 5px;
 margin: 20px;
+
 
 }
 
@@ -98,9 +110,10 @@ align-items: center;
 }
 
 .beerCard img {
-  width: 100%;
+  width: 95%;
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
+  margin: 5px;
 }
 
 
