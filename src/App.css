@@ -14,11 +14,12 @@
 h1{
   text-align: center;
   margin-top: 40px;
-  align-self: auto;
+  
 }
 
 .container {
-  margin: auto
+  justify-content: center;
+  align-items: center;
 }
 
 

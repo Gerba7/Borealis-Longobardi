@@ -61,15 +61,11 @@
             setItemDetail(itemDetail)
             })
             return(() => {
-                setItemDetail(undefined)
+                setItemDetail()
             })
         }, [id])
 
-        if(!itemDetail) {
-            return(
-                <h1>Loading . . .</h1>
-            )
-        }
+        
 
         return(
             <div>

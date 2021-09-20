@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import Styles from './components/Styles';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -29,9 +30,6 @@ function App() {
             <ItemListContainer />
           </Route>
           <Route path="/itemlist/:id">
-            <ItemDetailContainer />
-          </Route>
-          <Route path="/detailslist">
             <ItemDetailContainer />
           </Route>
           <Route path="/contactus">

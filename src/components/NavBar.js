@@ -30,8 +30,7 @@ const NavBar = () => {
                         <NavLink to="/aboutus" activeClassName="navLink" className="Option"><Button outline color="light">About Us</Button></NavLink>
                         <NavLink to="/styles" activeClassName="navLink" className="Option"><Button outline color="light">Styles</Button></NavLink>
                         <NavLink to="/itemlist" activeClassName="navLink" className="Option"><Button outline color="light">Buy</Button></NavLink>
-                        <NavLink to="/contactus" activeClassName="navLink" className="Option"><Button outline color="light">Contact Us</Button></NavLink>
-                        <NavLink to="/detailslist" activeClassName="navLink" className="Option"><Button outline color="light">Details</Button></NavLink>                        
+                        <NavLink to="/contactus" activeClassName="navLink" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
                     </Nav>
                 </Collapse>
                 <NavLink to="/cart" activeClassName="navLink" className="Option"><CartWigdet /></NavLink>            
