@@ -65,7 +65,9 @@
             })
         }, [id])
 
-        
+        if(itemDetail.lenght === 0) {
+            return <h1>Loading . . .</h1>
+        }
 
         return(
             <div>

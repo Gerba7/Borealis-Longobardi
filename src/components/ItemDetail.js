@@ -2,11 +2,7 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = ({details}) => {
 
-    if(!details) {
-        return(
-             <h1>Loading . . .</h1>
-        )
-    }
+
 
     return(
         
