@@ -50,8 +50,8 @@
     const ItemDetailContainer = () => {
 
         const { id } = useParams();
-        const [itemDetail, setItemDetail] = useState([])
-        
+        const [itemDetail, setItemDetail] = useState(undefined)
+         
 
         useEffect(() => {
 
@@ -61,17 +61,15 @@
             setItemDetail(itemDetail)
             })
             return(() => {
-                setItemDetail()
+                setItemDetail(undefined)
             })
         }, [id])
 
-        if(itemDetail.lenght === 0) {
-            return <h1>Loading . . .</h1>
-        }
+        
 
         return(
             <div>
-                <ItemDetail details={itemDetail} />
+                { itemDetail ? <ItemDetail details={itemDetail} /> : <h1>Loading . . .</h1> }
             </div>
         )
             

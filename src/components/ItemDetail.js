@@ -2,6 +2,7 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = ({details}) => {
 
+   /* const [cart, setCart] = useState()*/
 
 
     return(
