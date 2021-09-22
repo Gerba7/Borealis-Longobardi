@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import ItemCount from './ItemCount';
 
 const ItemDetail = ({details}) => {
 
-   /* const [cart, setCart] = useState()*/
-
+    const [cart, setCart] = useState(0)
+    console.log(cart)
+ 
 
     return(
         
@@ -15,7 +17,7 @@ const ItemDetail = ({details}) => {
                     <p>{details.description}</p>
                     <h6>{details.price}</h6> 
                 </div>
-                <ItemCount stock={details.stock} initial="0"/>
+                <ItemCount setCart={setCart} cart={cart} stock={details.stock} initial="0"/>
             </div>
         </div>
     )
