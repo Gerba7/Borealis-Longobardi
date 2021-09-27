@@ -69,7 +69,7 @@
 
         return(
             <div>
-                { itemDetail ? <ItemDetail details={itemDetail} /> : <h1>Loading . . .</h1> }
+                { itemDetail ? <ItemDetail product={itemDetail} /> : <h1>Loading . . .</h1> }
             </div>
         )
             

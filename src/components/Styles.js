@@ -4,8 +4,11 @@
 const Styles = () => {
 
     return(
-        <div style={{alignItems: 'center'}}>
-            <h1>Styles</h1>
+
+        <div>
+            <h1>styles</h1>
+           
+
         </div>
     );
 }

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import CartContext from '../context/CartContext';
 
-const ItemCount = ({stock, initial, setCart, cart}) => {
 
-    
+const ItemCount = ({stock, initial, setCart, product}) => {
+
+    const { addItem } = useContext(CartContext)
     const [count, setCount] = useState(parseInt(initial));
     const [button, setButton] = useState(true)
     
@@ -27,7 +29,12 @@ const ItemCount = ({stock, initial, setCart, cart}) => {
     const addToCart = () => {
         setCart(count)
         setCount(0) 
-        setButton(false)   
+        setButton(false)
+        addItem(product,count) 
+    }
+
+    const remaining = (stock,count) => {
+        return(stock-count)
     }
 
  
@@ -38,7 +45,8 @@ const ItemCount = ({stock, initial, setCart, cart}) => {
             <button className="btn count btn-success" onClick={sumar}>+</button>
             { button ? <button className="btn cartplus btn-primary" onClick={() => addToCart()}>Add to cart</button> :
                 <NavLink to="/cart"><button className="btn cartplus btn-secondary">Go to cart</button></NavLink> }
-            <p className="stock text-center">Apurate! Solo quedan: {stock-count-cart}</p>
+            { remaining === 0 ? <p>AGOTADO!</p>:
+            <p className="stock text-center">Apurate! Solo quedan: {remaining}</p>}
         </div>
     );
 

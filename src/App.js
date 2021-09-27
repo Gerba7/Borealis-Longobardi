@@ -9,11 +9,13 @@ import Styles from './components/Styles';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
 
   return (
     <div className="App">
+      <CartContextProvider >
       <BrowserRouter>
         <NavBar />
         <Switch>
@@ -39,7 +41,8 @@ function App() {
             <Cart />
           </Route>
         </Switch>
-      </BrowserRouter> 
+      </BrowserRouter>
+      </CartContextProvider> 
     </div>
   );
 
