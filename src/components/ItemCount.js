@@ -33,10 +33,8 @@ const ItemCount = ({stock, initial, setCart, product}) => {
         addItem(product,count) 
     }
 
-    const remaining = (stock,count) => {
-        return(stock-count)
-    }
-
+    const remaining = stock-count
+ 
  
     return(
         <div className="container">
@@ -45,7 +43,7 @@ const ItemCount = ({stock, initial, setCart, product}) => {
             <button className="btn count btn-success" onClick={sumar}>+</button>
             { button ? <button className="btn cartplus btn-primary" onClick={() => addToCart()}>Add to cart</button> :
                 <NavLink to="/cart"><button className="btn cartplus btn-secondary">Go to cart</button></NavLink> }
-            { remaining === 0 ? <p>AGOTADO!</p>:
+            { remaining === 0 ? <p className="nstock text-center">AGOTADO!</p>:
             <p className="stock text-center">Apurate! Solo quedan: {remaining}</p>}
         </div>
     );

@@ -26,12 +26,12 @@ export const CartContextProvider = ({children}) => {
     const addedProducts = []
 
     const addProduct = () => {
-        [...addedProducts,newProduct]
+        return [...addedProducts,newProduct]
     }
 
-    const isInCart = item.find(prod => prod.id === item.id)
+    /*const isInCart = item.find(prod => prod.id === item.id)*/
     
-    addProduct()
+    /*addProduct()*/
 
     
 

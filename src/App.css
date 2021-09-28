@@ -97,6 +97,12 @@ align-items: center;
   /*color: #1EA234;*/
 }
 
+.nstock{
+  font-size: small;
+  font-weight: 500;
+  color: #e92121;
+}
+
 
 /*Item*/
 
