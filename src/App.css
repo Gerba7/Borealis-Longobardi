@@ -17,10 +17,7 @@ h1{
   
 }
 
-/*.container {
-  justify-content: center;
-  align-items: center;
-}*/
+
 
 
 /*NavBar*/
@@ -126,5 +123,41 @@ align-items: center;
   border-top-right-radius: 5%;
   margin: 5px;
 }
+  
+/*Cart*/
+
+#cartitem {
+  background-color: white;
+  border-radius: 5%;
+  height: 10rem;
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+  
+
+}
+
+.cartimg {
+  width: 6rem;
+  height: 6rem;
+  
+}
+
+.row {
+  align-items: center;
+}
+
+
+.cartwidget {
+  display: flex;
+  align-items: center;
+  
+}
+
+.cartnum {
+  margin-left: 10px;
+  color: #ffffff;
+}
+
 
 

@@ -1,45 +1,59 @@
 import { createContext, useState } from 'react';
 
+
 const CartContext = createContext()
 
 export const CartContextProvider = ({children}) => {
     const [quantity,setQuantity] = useState(0)
-    const [item,setItem] = useState(undefined)
+    const [products,setProducts] = useState([])
+   
 
     const addItem = (item,quantity) => {
-        setQuantity(quantity)
-        setItem(item)
+        const newProduct = {
+            ...item,
+            quantity: quantity
+        }
+
+        if (isInCart(item.id)) { 
+            const newProducts = products.map(prod => {
+                if (prod.id === item.id) { 
+                    const newProduct = {
+                        ...products,
+                        quantity: quantity
+                    }
+                    return newProduct
+                } else {
+                    return prod
+                }
+            })
+            setProducts(newProducts)
+             }
+            setProducts([...products, newProduct])
+        
     }
 
-    console.log(addItem)
+    console.log(quantity)
+    console.log(products)
 
     const clear = () => {
-        setQuantity(0)
-        setItem(undefined)
+        setProducts([])
     }
 
-    const newProduct = {
-        ...item,
-        quantity: quantity
+    const isInCart = (id) => {
+       return products.some(prod => prod.id === id)
     }
 
-    const addedProducts = []
-
-    const addProduct = () => {
-        return [...addedProducts,newProduct]
+    const removeItem = (id) => {
+        products.delete(prod => prod.id === products.id)
     }
 
-    /*const isInCart = item.find(prod => prod.id === item.id)*/
-    
-    /*addProduct()*/
 
-    
 
-    console.log(addedProducts)
+
 
 
     return(
-        <CartContext.Provider value={quantity,item,addItem,addedProducts}>
+        <CartContext.Provider value={{quantity,setQuantity,addItem,clear,removeItem}}>
             {children}
         </CartContext.Provider>
         

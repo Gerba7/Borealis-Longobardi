@@ -4,7 +4,7 @@ import ItemCount from './ItemCount';
 const ItemDetail = ({product}) => {
 
     const [cart, setCart] = useState(0)
-    console.log(cart)
+    
  
 
     return(
