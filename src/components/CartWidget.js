@@ -6,15 +6,15 @@ import CartContext from '../context/CartContext';
 
 const CartWidget = () => {
 
-    const { quantity } = useContext(CartContext)
+    const { totalQuantity } = useContext(CartContext)
 
     return(
         
         <div>
-        { quantity === 0 ? <div></div> :
+        { totalQuantity() === 0 ? <div></div> :
         <a className="cartwidget" href="">
         <div><FontAwesomeIcon color="white" icon={faCartPlus} size="lg" /></div>
-        <div className="cartnum">{quantity}</div>
+        <div className="cartnum">{totalQuantity()}</div>
         </a>}
         </div>
         

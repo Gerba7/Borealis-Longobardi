@@ -5,7 +5,7 @@ const beers = [
     {
         id: 0,
         title: 'Golden Ale',
-        price: '$250',
+        price: '250',
         description: '',
         pictureUrl: '/assets/cerveza-standard.png',
         stock: 25,
@@ -13,7 +13,7 @@ const beers = [
     {
         id: 1,
         title: 'Irish Ale',
-        price: '$270',
+        price: '270',
         description: '',
         pictureUrl: '/assets/cerveza-standard.png',
         stock: 20,
@@ -21,7 +21,7 @@ const beers = [
     {
         id: 2,
         title: 'Imperial Stout',
-        price: '$290',
+        price: '290',
         description: '',
         pictureUrl: '/assets/cerveza-standard.png',
         stock: 12,
@@ -29,7 +29,7 @@ const beers = [
     {
         id: 3,
         title: 'Heffeweisen',
-        price: '$230',
+        price: '230',
         description: '',
         pictureUrl: '/assets/cerveza-standard.png',
         stock: 23,

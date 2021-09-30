@@ -5,7 +5,7 @@ import CartContext from '../context/CartContext';
 
 const ItemCount = ({stock, initial, setCart, product}) => {
 
-    const { addItem } = useContext(CartContext)
+    const { addItem, restoStock } = useContext(CartContext)
     const [count, setCount] = useState(parseInt(initial));
     const [button, setButton] = useState(true)
     
@@ -19,7 +19,7 @@ const ItemCount = ({stock, initial, setCart, product}) => {
     }
 
     const sumar = () => {
-        if(count >= stock) {
+        if(count >= stock-restoStock()) {
             console.log("maximo");
         } else {
             setCount(count + 1)
@@ -33,7 +33,7 @@ const ItemCount = ({stock, initial, setCart, product}) => {
         addItem(product,count) 
     }
 
-    const remaining = stock-count
+    const remaining = stock-count-restoStock()
  
  
     return(
@@ -43,7 +43,7 @@ const ItemCount = ({stock, initial, setCart, product}) => {
             <button className="btn count btn-success" onClick={sumar}>+</button>
             { button ? <button className="btn cartplus btn-primary" onClick={() => addToCart()}>Add to cart</button> :
                 <NavLink to="/cart"><button className="btn cartplus btn-secondary">Go to cart</button></NavLink> }
-            { remaining === 0 ? <p className="nstock text-center">AGOTADO!</p>:
+            { remaining <= 0 ? <p className="nstock text-center">AGOTADO!</p>:
             <p className="stock text-center">Apurate! Solo quedan: {remaining}</p>}
         </div>
     );

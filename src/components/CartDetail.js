@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import CartContext from '../context/CartContext';
@@ -5,10 +6,11 @@ import CartContext from '../context/CartContext';
 
 const CartDetail = ({prod}) => {
 
-    /*const { removeItem } = useContext(CartContext)*/
+    const { removeItem, clear } = useContext(CartContext)
 
     return(
-        <div className="container cartitem" id="cartitem">
+        <div>
+            <div className="container cartitem" id="cartitem">
                 <div className="row">
                     <div className="col-3">
                         <img className="cartimg" src={prod.pictureUrl} alt={prod.title} />
@@ -21,10 +23,14 @@ const CartDetail = ({prod}) => {
                         {prod.quantity}
                     </div>
                     <div className="col-2">
-                    <button /*onClick={() => removeItem(prod.id)}*/><FontAwesomeIcon color="black" icon={faTimesCircle} size="lg"></FontAwesomeIcon></button>
+                    <button onClick={() => removeItem(prod.id)}><FontAwesomeIcon color="black" icon={faTimesCircle} size="lg"></FontAwesomeIcon></button>
                     </div>
-                </div>                
+                </div>                                           
             </div>
+            
+        </div>    
+            
+            
     )
 
 
