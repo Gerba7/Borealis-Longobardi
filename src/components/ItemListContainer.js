@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
+import { db } from '../services/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-const beers = [
+/*const beers = [
     {
         id: 0,
         title: 'Golden Ale',
@@ -41,7 +43,7 @@ const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => resolve(beers), 2000);
     });
-}
+}*/
 
 
 const ItemListContainer = () => {
@@ -49,14 +51,29 @@ const ItemListContainer = () => {
     
     const [listBeer, setListBeer] = useState([])
 
-    useEffect(() => {
+    /*useEffect(() => {
         const items = getProducts()
 
         items.then(result => {
             console.log(result)
             setListBeer(result)
         })
+    }, [])*/
+
+
+    useEffect(() => {
+        getDocs(collection(db, 'Productos')).then((result) => {
+            const listBeer = result.docs.map(doc => {
+                return { id: doc.id, ...doc.data() }
+            })
+            console.log(listBeer)
+            setListBeer(listBeer)
+        }).catch((error) => {
+            console.log('Error searching products', error)
+        }).finally()
     }, [])
+
+    
 
     if(listBeer.length === 0) {
         return <h1>Loading . . .</h1>

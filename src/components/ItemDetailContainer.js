@@ -1,9 +1,11 @@
-    import { useState, useEffect } from "react";
-    import { useParams } from 'react-router-dom';
-    import ItemDetail from './ItemDetail';
+import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import ItemDetail from './ItemDetail';
+import { db } from '../services/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 
-    const beers = [
+    /*const beers = [
         {
             id: 0,
             title: 'Golden Ale',
@@ -44,7 +46,7 @@
         return new Promise((resolve) => {
             setTimeout(() => resolve(beers), 2000)
         });
-    }
+    }*/
 
 
     const ItemDetailContainer = () => {
@@ -53,13 +55,25 @@
         const [itemDetail, setItemDetail] = useState(undefined)
          
 
-        useEffect(() => {
+        /*useEffect(() => {
 
             const item = getItem()
             item.then(result => {
             const itemDetail = result.find(prod => prod.id === parseInt(id))
             setItemDetail(itemDetail)
             })
+            return(() => {
+                setItemDetail(undefined)
+            })
+        }, [id])*/
+
+        useEffect(() => {
+            getDoc(doc(db, 'Productos', id)).then((result) => {
+                const itemDetail = { id: result.id, ...result.data()}
+                setItemDetail(itemDetail)
+            }).catch((error) => {
+                console.log('Error searching products', error)
+            }).finally()
             return(() => {
                 setItemDetail(undefined)
             })

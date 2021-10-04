@@ -6,7 +6,7 @@ import CartContext from '../context/CartContext';
 
 const CartDetail = ({prod}) => {
 
-    const { removeItem, clear } = useContext(CartContext)
+    const { removeItem } = useContext(CartContext)
 
     return(
         <div>

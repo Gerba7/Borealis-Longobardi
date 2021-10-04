@@ -16,10 +16,10 @@ const Cart = () => {
             <div className="">
                 {products.map(prod => <CartDetail prod={prod} key={prod.id} />)}
             </div>
-            <div>
+            <div className="center">
                 <button className="btn btn-danger" onClick={() => clear()}>Clear Cart</button>
             </div>
-            <div>
+            <div className="center">
                 <h3>Total: ${totalPrice()}</h3>
             </div>            
         </div>
