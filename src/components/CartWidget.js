@@ -12,10 +12,10 @@ const CartWidget = () => {
         
         <div>
         { totalQuantity() === 0 ? <div></div> :
-        <a className="cartwidget" href="">
+        <div className="cartwidget">
         <div><FontAwesomeIcon color="white" icon={faCartPlus} size="lg" /></div>
         <div className="cartnum">{totalQuantity()}</div>
-        </a>}
+        </div>}
         </div>
         
     );

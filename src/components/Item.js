@@ -10,7 +10,7 @@ const Item = ({beer}) => {
 
         <div className="beerCard">
             <img src={beer.pictureUrl} alt={beer.title} />
-            <div>
+            <div> 
                 <h5>{beer.title}</h5>
                 <Link key={beer.id} to={`/itemlist/${beer.id}`} activeClassName="navLink" className="Option"><button className="btn cartplus btn-dark">Buy</button></Link>
             </div>

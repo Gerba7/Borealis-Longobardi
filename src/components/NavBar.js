@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import { useState } from 'react'; 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
 import CartWigdet from './CartWidget';
@@ -20,20 +20,20 @@ const NavBar = () => {
                 <NavbarToggler onClick={toggle} icon={faList}>
                     <FontAwesomeIcon color="white" icon={faList} size="lg" />
                 </NavbarToggler>
-                <NavbarBrand className="mr-auto" href="/">
-                    <Link to="/" activeClassName="navLink" className="Option"> 
-                        <img id="logo" src="" alt="Aca va a ir el Logo"/>
+                <NavbarBrand className="mr-auto">
+                    <Link to="/" className="Option"> 
+                        <img id="logo" alt="Aca va a ir el Logo"/>
                     </Link>
                 </NavbarBrand>
                 <Collapse className="justify-content-center" isOpen={isOpen} navbar> 
                     <Nav navbar>  
-                        <NavLink to="/aboutus" activeClassName="navLink" className="Option"><Button outline color="light">About Us</Button></NavLink>
-                        <NavLink to="/styles" activeClassName="navLink" className="Option"><Button outline color="light">Styles</Button></NavLink>
-                        <NavLink to="/itemlist" activeClassName="navLink" className="Option"><Button outline color="light">Buy</Button></NavLink>
-                        <NavLink to="/contactus" activeClassName="navLink" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
+                        <NavLink to="/aboutus" className="Option"><Button outline color="light">About Us</Button></NavLink>
+                        <NavLink to="/styles" className="Option"><Button outline color="light">Styles</Button></NavLink>
+                        <NavLink to="/itemlist" className="Option"><Button outline color="light">Buy</Button></NavLink>
+                        <NavLink to="/contactus" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
                     </Nav>
                 </Collapse>
-                <NavLink to="/cart" activeClassName="navLink" className="Option"><CartWigdet /></NavLink>            
+                <NavLink to="/cart" className="Option"><CartWigdet /></NavLink>            
             </div>
             
         </Navbar>

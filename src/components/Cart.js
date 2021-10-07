@@ -1,11 +1,62 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import CartContext from '../context/CartContext';
 import CartDetail from './CartDetail';
+import { Timestamp, collection, addDoc, getDoc, doc, writeBatch } from 'firebase/firestore';
+import { db } from '../services/firebase';
+
 
 const Cart = () => {
 
     const { products, totalQuantity, totalPrice, clear } = useContext(CartContext)
+    const [total,setTotal] = useState()
+
+
+    useEffect(() => {
+        setTotal(totalPrice())
+    }, [totalPrice])
+
+    const confirmOrder = () => {
+
+        const user = {
+            name: 'Pepe',
+            phone: 111-111111,
+            email: 'pepe21@gmail.com'
+        }
+
+        const objOrder = {
+            buyer: user,
+            items: products,
+            total: total,
+            date: Timestamp.fromDate(new Date())
+        }
+
+        const batch = writeBatch(db)
+        const outOfStock = []
+
+        objOrder.items.forEach((prod, i) => {
+            getDoc(doc(db, 'Productos', prod.id)).then(result => {
+                if(result.data().stock >= objOrder.items[i].quantity) {
+                    batch.update(doc(db, 'Productos', result.id), {
+                        stock: result.data().stock - objOrder.items[i].quantity
+                    })
+                } else {
+                    outOfStock.push({...result.data(), id: result.id})
+                }
+            })
+        })
+
+        if(outOfStock.length === 0) {
+            addDoc(collection(db, 'orders'), objOrder).then(() => {
+                batch.commit()
+            }).finally(() => {
+                setTotal(0)
+                clear()
+                console.log('success')
+            })
+        }
+    }
+
 
     return(
         <div>
@@ -18,9 +69,10 @@ const Cart = () => {
             </div>
             <div className="center">
                 <button className="btn btn-danger" onClick={() => clear()}>Clear Cart</button>
+                <button className="btn btn-success" onClick={() => confirmOrder()}>Confirm Order</button>
             </div>
             <div className="center">
-                <h3>Total: ${totalPrice()}</h3>
+                <h3>Total: ${total}</h3>
             </div>            
         </div>
         }
