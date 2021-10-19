@@ -1,42 +1,47 @@
-import { useState } from 'react'; 
+import React, { useState } from 'react'; 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
 import CartWigdet from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
+import LoginModal from './LoginModal';
 
 
 
 const NavBar = () => {
 
-    const [isOpen,setIsOpen] = useState (false);
+    const [isOpen,setIsOpen] = useState(false);
     
 
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(!isOpen)
+
+    
 
     return(
-        <Navbar expand="md">
-            <div className="container mt-2">
-                <NavbarToggler onClick={toggle} icon={faList}>
-                    <FontAwesomeIcon color="white" icon={faList} size="lg" />
-                </NavbarToggler>
-                <NavbarBrand className="mr-auto">
-                    <Link to="/" className="Option"> 
-                        <img id="logo" alt="Aca va a ir el Logo"/>
-                    </Link>
-                </NavbarBrand>
-                <Collapse className="justify-content-center" isOpen={isOpen} navbar> 
-                    <Nav navbar>  
-                        <NavLink to="/aboutus" className="Option"><Button outline color="light">About Us</Button></NavLink>
-                        <NavLink to="/styles" className="Option"><Button outline color="light">Styles</Button></NavLink>
-                        <NavLink to="/itemlist" className="Option"><Button outline color="light">Buy</Button></NavLink>
-                        <NavLink to="/contactus" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
-                    </Nav>
-                </Collapse>
-                <NavLink to="/cart" className="Option"><CartWigdet /></NavLink>            
+        <div className="container">
+            <div className="row">
+                    <Navbar expand="lg">
+                            <NavbarToggler onClick={toggle} icon={faList}>
+                                <FontAwesomeIcon className="toggle" color="white" icon={faList} size="lg" />
+                            </NavbarToggler>
+                            <NavbarBrand>
+                                <Link to="/"> 
+                                    <img id="logo" alt="Aca va a ir el Logo"/>
+                                </Link>
+                            </NavbarBrand>
+                            <Collapse className="justify-content-center" isOpen={isOpen} navbar> 
+                                <Nav navbar>  
+                                    <NavLink to="/aboutus" className="Option"><Button outline color="light">About Us</Button></NavLink>
+                                    <NavLink to="/styles" className="Option"><Button outline color="light">Styles</Button></NavLink>
+                                    <NavLink to="/itemlist" className="Option"><Button outline color="light">Buy</Button></NavLink>
+                                    <NavLink to="/contactus" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
+                                </Nav>
+                            </Collapse>
+                            <LoginModal />
+                            <NavLink to="/cart" className="cartwidgetm"><CartWigdet /></NavLink>                                                
+                    </Navbar>
             </div>
-            
-        </Navbar>
+        </div>
          
     );
 }

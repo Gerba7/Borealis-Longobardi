@@ -16,7 +16,7 @@ const Cart = () => {
         setTotal(totalPrice())
     }, [totalPrice])
 
-    const confirmOrder = () => {
+    const confirmOrder = () => { /*currentUser ?*/
 
         const user = {
             name: 'Pepe',
@@ -47,14 +47,15 @@ const Cart = () => {
         })
 
         if(outOfStock.length === 0) {
-            addDoc(collection(db, 'orders'), objOrder).then(() => {
+            addDoc(collection(db, 'Orders'), objOrder).then(() => {
                 batch.commit()
             }).finally(() => {
                 setTotal(0)
                 clear()
                 console.log('success')
             })
-        }
+        } /* : */ 
+
     }
 
 

@@ -1,22 +1,22 @@
 import { createContext, useState } from 'react';
-import { Alert } from 'reactstrap';
+
 
 
 const AlertContext = createContext()
 
 export const AlertContextProvider = ({children}) => {
 
-    const [modal,setModal] = useState([])
-   
-    const modal = () => {
-        return <Alert> products were added to your Cart!</Alert>
+    const [notifCount,setNotifCount] = useState([])
+
+    const alertCount = (alertCount) => {
+        setNotifCount(alertCount)
     }
 
- 
-    
+    console.log(notifCount)
+
 
     return(
-        <AlertContext.Provider value={{}}>
+        <AlertContext.Provider value={{alertCount,}}>
             {children}
         </AlertContext.Provider>
         

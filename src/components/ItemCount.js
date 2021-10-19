@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import CartContext from '../context/CartContext';
 
 
+
 const ItemCount = ({stock, initial, product}) => {
 
+    
     const { addItem, restoStock } = useContext(CartContext)
     const [count, setCount] = useState(parseInt(initial));
     const [button, setButton] = useState(true)
@@ -31,7 +33,6 @@ const ItemCount = ({stock, initial, product}) => {
         setCount(0) 
         setButton(false)
         addItem(product,count) 
-        
     }
 
     const remaining = stock-count-restoStock()

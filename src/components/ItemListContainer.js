@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { db } from '../services/firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import { Spinner } from 'reactstrap';
 
 /*const beers = [
     {
@@ -76,7 +77,10 @@ const ItemListContainer = () => {
     
 
     if(listBeer.length === 0) {
-        return <h1>Loading . . .</h1>
+        return <div className="spinner">
+                    <Spinner type="grow" color="light" />
+                </div>
+        
     }
 
     return(

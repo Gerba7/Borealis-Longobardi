@@ -8,14 +8,19 @@ import ContactUs from './components/ContactUs';
 import Styles from './components/Styles';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContextProvider } from './context/CartContext';
+import { AlertContextProvider } from './context/NotificationContext';
+import { UserContextProvider } from './context/UserContext';
 
 function App() {
 
   return (
     <div className="App">
+      <UserContextProvider>
       <CartContextProvider >
+      <AlertContextProvider>
       <BrowserRouter>
         <NavBar />
         <Switch>
@@ -40,9 +45,14 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
         </Switch>
       </BrowserRouter>
-      </CartContextProvider> 
+      </AlertContextProvider>
+      </CartContextProvider>
+      </UserContextProvider> 
     </div>
   );
 
