@@ -3,9 +3,10 @@ import Item from './Item';
 
 const ItemList = ({beers}) => {
 
+    console.log(beers)
 
         return(
-            <div className="container">
+            <div>
                 {beers.map(beer => <Item beer={beer} key={beer.id} />)}
             </div>    
             

@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContextProvider } from './context/CartContext';
 import { AlertContextProvider } from './context/NotificationContext';
 import { UserContextProvider } from './context/UserContext';
+import FavoritesContainer from './components/FavoritesContainer';
 
 function App() {
 
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/favorites">
+            <FavoritesContainer />
           </Route>
           <Route path="/checkout">
             <Checkout />

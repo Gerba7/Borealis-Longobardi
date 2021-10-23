@@ -3,7 +3,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button } from 'react
 import { Link, NavLink } from 'react-router-dom';
 import CartWigdet from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList } from '@fortawesome/free-solid-svg-icons';
+import { faList, faStar } from '@fortawesome/free-solid-svg-icons';
 import LoginModal from './LoginModal';
 
 
@@ -38,6 +38,7 @@ const NavBar = () => {
                                 </Nav>
                             </Collapse>
                             <LoginModal />
+                            <NavLink to="/favorites" className="favswidget"><FontAwesomeIcon className="toggle" color="white" icon={faStar} size="lg" /></NavLink>
                             <NavLink to="/cart" className="cartwidgetm"><CartWigdet /></NavLink>                                                
                     </Navbar>
             </div>

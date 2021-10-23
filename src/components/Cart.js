@@ -10,6 +10,7 @@ const Cart = () => {
 
     const { products, totalQuantity, totalPrice, clear } = useContext(CartContext)
     const [total,setTotal] = useState()
+    const [orderId, setOrderId] = useState()
 
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const Cart = () => {
             </div>
             <div className="center">
                 <button className="btn btn-danger" onClick={() => clear()}>Clear Cart</button>
-                <button className="btn btn-success" onClick={() => confirmOrder()}>Confirm Order</button>
+                <NavLink to="/checkout"><button className="btn btn-success" onClick={() => confirmOrder()}>Confirm Order</button></NavLink>
             </div>
             <div className="center">
                 <h3>Total: ${total}</h3>

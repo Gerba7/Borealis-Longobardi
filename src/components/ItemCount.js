@@ -40,10 +40,15 @@ const ItemCount = ({stock, initial, product}) => {
  
     return(
         <div className="container">
-            <h5 className="text-center mt-1">{count}</h5>
-            { button ? <div> 
-            <button className="btn count btn-danger" onClick={restar}>-</button>
-            <button className="btn count btn-success" onClick={sumar}>+</button>
+            
+            { button ? <div>
+            <div className="container counter">
+                <div className="row"> 
+                    <button className="btn count btn-danger" onClick={restar}>-</button>
+                    <h5 className="text-center mt-1">{count}</h5>
+                    <button className="btn count btn-success" onClick={sumar}>+</button>
+                </div>
+            </div>
             <button className="btn cartplus btn-primary" onClick={() => addToCart()}>Add to cart</button> </div> :
             <div><button onClick={() => setButton(true)} className="btn cartplus btn-secondary">Add More!</button>
                 <NavLink to="/cart"><button className="btn cartplus btn-primary">Go to cart</button></NavLink> </div> }

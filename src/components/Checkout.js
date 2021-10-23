@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { db } from '../services/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 
 const Checkout = () => {
 
 
-    /*const [checkout,setCheckout] = useState(undefined)*/
+    /*const [checkout,setCheckout] = useState(undefined)
 
-    /*useEffect(() => {
+    useEffect(() => {
         getDoc(doc(db, 'Orders', id)).then((result) => {
             const checkout = { id: result.id, ...result.data()}
             setCheckout(checkout)
@@ -24,6 +24,7 @@ const Checkout = () => {
 
         <div>
             <h1>Checkout</h1>
+            {console.log(Checkout)}
             
 
         </div>

@@ -80,12 +80,17 @@ align-items: center;
   animation: bright 4s;  
 }
 
+.itemlist {
+  display: inline-block;
+}
+
+
 
 /*ItemCount*/
 .count {
   padding: 4px 4px 4px 4px;
-  width: 40px;
-  height: 40px; 
+  width: 30px;
+  height: 30px; 
   margin-left: 15px;
   margin-bottom: 0;
 }
@@ -114,10 +119,11 @@ align-items: center;
 }
 
 
+
 /*Item*/
 
 .beerCard {
-  width: 18rem;
+  width: 20rem;
   margin: 40px;
   background-color: white;
   border-radius: 5%;

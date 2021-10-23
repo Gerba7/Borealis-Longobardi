@@ -32,7 +32,7 @@ export const CartContextProvider = ({children}) => {
              }
     }
 
-    console.log(products)
+    
 
     const clear = () => {
         setProducts([])
@@ -72,7 +72,7 @@ export const CartContextProvider = ({children}) => {
         return resto
     }
 
-    console.log(restoStock())
+    
  
     
 

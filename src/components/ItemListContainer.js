@@ -4,62 +4,11 @@ import { db } from '../services/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { Spinner } from 'reactstrap';
 
-/*const beers = [
-    {
-        id: 0,
-        title: 'Golden Ale',
-        price: '250',
-        description: '',
-        pictureUrl: '/assets/cerveza-standard.png',
-        stock: 25,
-    },
-    {
-        id: 1,
-        title: 'Irish Ale',
-        price: '270',
-        description: '',
-        pictureUrl: '/assets/cerveza-standard.png',
-        stock: 20,
-    },
-    {
-        id: 2,
-        title: 'Imperial Stout',
-        price: '290',
-        description: '',
-        pictureUrl: '/assets/cerveza-standard.png',
-        stock: 12,
-    },
-    {
-        id: 3,
-        title: 'Heffeweisen',
-        price: '230',
-        description: '',
-        pictureUrl: '/assets/cerveza-standard.png',
-        stock: 23,
-    }
-]
-
-
-const getProducts = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(beers), 2000);
-    });
-}*/
-
 
 const ItemListContainer = () => {
 
     
     const [listBeer, setListBeer] = useState([])
-
-    /*useEffect(() => {
-        const items = getProducts()
-
-        items.then(result => {
-            console.log(result)
-            setListBeer(result)
-        })
-    }, [])*/
 
 
     useEffect(() => {
@@ -84,8 +33,12 @@ const ItemListContainer = () => {
     }
 
     return(
-        <div>
-            <ItemList beers={listBeer} />
+        <div className="container">
+            <div className="row">
+                <div className="col-12 col-sm-12 col-md-4 col-lg-4">
+                    <ItemList beers={listBeer} />
+                </div>
+            </div>
         </div>
     )
 

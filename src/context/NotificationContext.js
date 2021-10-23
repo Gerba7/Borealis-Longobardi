@@ -12,8 +12,7 @@ export const AlertContextProvider = ({children}) => {
         setNotifCount(alertCount)
     }
 
-    console.log(notifCount)
-
+    
 
     return(
         <AlertContext.Provider value={{alertCount,}}>

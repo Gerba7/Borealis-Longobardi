@@ -40,7 +40,7 @@ const LoginModal = (props) => {
         <div>
             <Button color="light" onClick={set}>{buttonLabel}Login</Button>
             <Modal isOpen={modal} set={set} className={className}>
-                <ModalHeader set={set} close={closeBtn}>Login</ModalHeader>
+                <ModalHeader close={closeBtn}>Login</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={submitHandler}>
                         <FormGroup className="formgroup">

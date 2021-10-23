@@ -1,7 +1,7 @@
 import { useEffect, useState, createContext} from 'react';
 import { auth } from '../services/firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { Timestamp, collection, setDoc, getDoc, doc, updateDoc } from 'firebase/firestore';
+import { Timestamp, setDoc, getDoc, doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
 const UserContext = createContext()
@@ -46,6 +46,8 @@ export const UserContextProvider = ({children}) => {
             getDoc(doc(db, 'Users', user.uid)).then((result) => {
                 const userInfo = { id: result.id, ...result.data()}
                 setCurrentUser(userInfo)})
+            getDoc(doc(db, 'Users', user.uid)).then((result) => {
+                setFavorites(result.data().favorites)})
         } else {
             setCurrentUser(null)
             console.log('Not Logged In')
@@ -55,30 +57,23 @@ export const UserContextProvider = ({children}) => {
 
     const addToFavorites = (item) => {
         if(currentUser) {
-            const favs = []
-            updateDoc(doc(db, 'Users', currentUser.id), { favorites: [...favs, item.id]})    
+            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayUnion(item.id)})  
         } else {
             console.log('You must be logged in')
         }
     }
 
-    const clearFavs = () => {
-        setFavorites([])
-    }
+    const removeFavs = (item) => {
+        if(currentUser) {
+            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayRemove(item.id)})  
+        } else {
+            console.log('You must be logged in')
+        }
+     }
 
-    const isInFavs = (id) => {
-       return favorites.some(fav => fav.id === id)
-    }
-
-    const removeFavs = (id) => {
-       const newFavs = favorites.filter(fav => favorites.id !== id)
-       setFavorites(newFavs)
-    }
-
-   
-
+    
     return(
-        <UserContext.Provider value={{currentUser, signUp, logIn, logOut, addToFavorites}}>
+        <UserContext.Provider value={{currentUser, signUp, logIn, logOut, addToFavorites, removeFavs, favorites}}>
             {children}
         </UserContext.Provider>
         
