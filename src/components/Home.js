@@ -4,6 +4,8 @@ import UserContext from "../context/UserContext";
 
 const Home = (props) => {
 
+    
+
 
     const { currentUser } = useContext(UserContext)
 
@@ -15,6 +17,7 @@ const Home = (props) => {
             { currentUser ? <h1 className="mt-5 text-center" id="greeting2">{currentUser.userName}!</h1> :
             <h1 className="mt-5 text-center" id="greeting2">Stranger!</h1> }
             </div>
+
         </div>        
     );
 }

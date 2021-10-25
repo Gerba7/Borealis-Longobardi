@@ -10,6 +10,7 @@ export const UserContextProvider = ({children}) => {
 
     const [currentUser,setCurrentUser] = useState(undefined)
     const [favorites,setFavorites] = useState([])
+    const [orderId, setOrderId] = useState(undefined)
 
     
     const signUp = (email, password, name, surname, phone) => {
@@ -31,8 +32,7 @@ export const UserContextProvider = ({children}) => {
 
     const logIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
-        
-
+               
     }
 
     const logOut = () => {
@@ -57,23 +57,29 @@ export const UserContextProvider = ({children}) => {
 
     const addToFavorites = (item) => {
         if(currentUser) {
-            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayUnion(item.id)})  
+            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayUnion(item.id)})
+            console.log(item.id + 'Item Added')  
         } else {
             console.log('You must be logged in')
         }
     }
 
-    const removeFavs = (item) => {
-        if(currentUser) {
-            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayRemove(item.id)})  
+    const removeFavs = (id) => {
+        if(currentUser && favorites) {
+            updateDoc(doc(db, 'Users', currentUser.id), { favorites: arrayRemove(id)})  
+            console.log(id + 'Item Removed')
         } else {
             console.log('You must be logged in')
         }
      }
 
+    const newOrder = (order) => {
+        setOrderId(order)
+    } 
+
     
     return(
-        <UserContext.Provider value={{currentUser, signUp, logIn, logOut, addToFavorites, removeFavs, favorites}}>
+        <UserContext.Provider value={{currentUser, signUp, logIn, logOut, addToFavorites, removeFavs, favorites, newOrder, orderId}}>
             {children}
         </UserContext.Provider>
         

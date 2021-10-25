@@ -3,50 +3,8 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { db } from '../services/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-
-
-    /*const beers = [
-        {
-            id: 0,
-            title: 'Golden Ale',
-            price: '250',
-            description: '',
-            pictureUrl: '/assets/cerveza-standard.png',
-            stock: 25,
-        },
-        {
-            id: 1,
-            title: 'Irish Ale',
-            price: '270',
-            description: '',
-            pictureUrl: '/assets/cerveza-standard.png',
-            stock: 20,
-        },
-        {
-            id: 2,
-            title: 'Imperial Stout',
-            price: '290',
-            description: '',
-            pictureUrl: '/assets/cerveza-standard.png',
-            stock: 12,
-        },
-        {
-            id: 3,
-            title: 'Heffeweisen',
-            price: '230',
-            description: '',
-            pictureUrl: '/assets/cerveza-standard.png',
-            stock: 23,
-        }
-    ]
-
-    
-
-    const getItem = () => {
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(beers), 2000)
-        });
-    }*/
+import { Container, Row, Col } from 'reactstrap';
+ 
 
 
     const ItemDetailContainer = () => {
@@ -54,18 +12,6 @@ import { doc, getDoc } from 'firebase/firestore';
         const { id } = useParams();
         const [itemDetail, setItemDetail] = useState(undefined)
          
-
-        /*useEffect(() => {
-
-            const item = getItem()
-            item.then(result => {
-            const itemDetail = result.find(prod => prod.id === parseInt(id))
-            setItemDetail(itemDetail)
-            })
-            return(() => {
-                setItemDetail(undefined)
-            })
-        }, [id])*/
 
         useEffect(() => {
             getDoc(doc(db, 'Productos', id)).then((result) => {
@@ -82,9 +28,13 @@ import { doc, getDoc } from 'firebase/firestore';
         
 
         return(
-            <div>
-                { itemDetail ? <ItemDetail product={itemDetail} /> : <h1>Loading . . .</h1> }
-            </div>
+            <Container>
+                <Row>
+                    <Col xs="12" sm="8" md="6" lg="4">
+                        { itemDetail ? <ItemDetail product={itemDetail} /> : <h1>Loading . . .</h1> }
+                    </Col>
+                </Row>
+            </Container>
         )
             
             

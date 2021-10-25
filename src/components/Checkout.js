@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
-import { db } from '../services/firebase';
-import { getDoc, doc } from 'firebase/firestore';
+
+import { NavLink, Button } from 'reactstrap';
+
 
 const Checkout = () => {
 
+    /*const [checkout, setCheckout] = useState(undefined)
 
-    /*const [checkout,setCheckout] = useState(undefined)
+
+    const { orderId } = useContext(UserContext)
 
     useEffect(() => {
-        getDoc(doc(db, 'Orders', id)).then((result) => {
+        getDoc(doc(db, 'Orders', orderId)).then((result) => {
             const checkout = { id: result.id, ...result.data()}
             setCheckout(checkout)
         }).catch((error) => {
@@ -17,15 +19,18 @@ const Checkout = () => {
         return(() => {
             setCheckout(undefined)
         })
-    }, [id])*/
+    }, [])*/
 
 
     return(
 
         <div>
             <h1>Checkout</h1>
-            {console.log(Checkout)}
-            
+
+            <h1>Thank You for your purchase! :)</h1>
+
+            <NavLink to="/"><Button>Return Home</Button></NavLink>
+                    
 
         </div>
     );

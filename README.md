@@ -1,35 +1,46 @@
-# Getting Started with Create React App
+# React JS - Proyecto Final: Borealis
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Introduccion
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Instalacion y configuracion del entorno`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Este proyecto se basa en React.js, una biblioteca basada en Javascript y con el uso JSX.
+Para ello se instalo el node.js, que es un entorno de ejecucion de Javascript para ser ejecutado en la PC junto con el npm.
 
-### `npm test`
+A partir de alli se instala react por medio de la CLI y se crea un nuevo proyecto. Para la parte de estilos de pagina se instalo la ultima version de Bootstrap y de Reactstrap. Se instalan todos los modulos de react y se da comienzo al proyecto Borealis, un e-commerce de venta de cervezas artesanales.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Los comandos utilizados:
 
-### `npm run build`
+~~~
+C:\desktop\react>npm install -g create-react-app // Instalacion de react.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+C:\desktop\react>create-react-app Borealis-Longobardi // Creacion de la app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+C:\desktop\react\borealis-longobardi>npm start // Para iniciar la app 
+~~~
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Todos los cambios fueron comiteados en git y luego subidos al repositorio cuyo lin es:
 
-### `npm run eject`
+https://github.com/Gerba7/Borealis-Longobardi.git
+
+### `JSX`
+
+JSX es una extension de Javascript similar a HTML. Permite llamar a funciones y construir objetos.
+
+### `Componentes`
+
+Se utiliza los componentes
+
+#### **Navbar**
+
+Se comienza creando el componente de NavBar. En el se utilizan componentes prearmados de reactstrap
+para armar el Brand con la foto del Logo, cuatro botones que luego seran links a sus respectivos componentes y mas tarde agrefar el carrito. Luego se agrego en la ultima version un boton que abre un modal para poder registrar un usuario o loguearse con uno existente para poder usar todas las funcionalidades de la pagina, entre ellas confirmar una orden de pedido.
+
+### `Promesas y map`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -39,17 +50,17 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### `Routing y navegacion`
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### `Context`
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### `Firebase`
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 

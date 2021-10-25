@@ -6,7 +6,9 @@ const Styles = () => {
     return(
 
         <div>
-            <h1>styles</h1>
+            <h1>Styles</h1>
+
+            <h2 style={{textAlign: "center"}}>Under Construction</h2>
            
 
         </div>

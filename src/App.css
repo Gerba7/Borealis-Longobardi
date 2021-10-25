@@ -84,6 +84,50 @@ align-items: center;
   display: inline-block;
 }
 
+.listCard {
+  margin: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  width: 20rem;
+  box-shadow: 0px 2px 8px 0px white;
+  color: black;
+}
+
+.listCard img {
+  width: 95%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 5px;
+  
+}
+
+.overlayImg {
+  margin-top: 250px;
+  margin-right: 180px;
+}
+
+.overlayBtn {
+  margin-left: 250px;
+  margin-top: -5px;
+}
+
+.favbtn {
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  padding: 0px;
+  padding-left: 0px;
+  border-radius: 25px;
+}
+
+.favbtn:hover {
+  background-color: none;
+  text-decoration: none;
+  animation-name: none;
+  animation-duration: 0ms;
+  animation-fill-mode: none;
+}
+
 
 
 /*ItemCount*/
@@ -95,11 +139,6 @@ align-items: center;
   margin-bottom: 0;
 }
 
-.cartplus {
-  width: 200px;
-  margin-left: 20px;
-  margin-bottom: 5px;    
-}
 
 .cartplus:hover{
   color: black;

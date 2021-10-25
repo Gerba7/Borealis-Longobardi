@@ -1,10 +1,9 @@
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { useState, useContext, useRef } from 'react';
 import UserContext from '../context/UserContext';
-import { Redirect } from 'react-router-dom';
 
 
-const SignUpModal = (props) => {
+const SignUpModal = (props,{close}) => {
 
         const {
           buttonLabel,
@@ -33,15 +32,23 @@ const SignUpModal = (props) => {
     const submitHandler = async (e) => {
         e.preventDefault()
 
-        if(passwordRef.current.value === passwordConfirmRef.current.value) {
-            
+        if(passwordRef.current.value !== passwordConfirmRef.current.value) {
+            return setError('Passwords are different')
+        }
+
+        try{
+            setError("")
+            setLoading(true)    
             await signUp(emailRef.current.value, passwordRef.current.value, nameRef.current.value, surnameRef.current.value, phoneRef.current.value)
             console.log("Signed Up")
-            return <Redirect to='/'/>
-                        
-        } else {
-           return setError('Passwords are different')
-        }
+            setNested()
+
+            
+        } catch {
+            setError("Failed to create User")
+        }               
+        
+        setLoading(false)
         
     }   
     
@@ -51,7 +58,7 @@ const SignUpModal = (props) => {
                     <Button onClick={setNested} color="primary">{buttonLabel}Sign Up</Button>
                     <Modal isOpen={nestedModal} set={setNested} className={className}>
                         <ModalHeader set={nestedModal} close={closeBtn}>Sing Up</ModalHeader>
-                        {error ? <Alert variant="danger">{error}</Alert> : <div></div>}
+                        {error ? <Alert color="danger">{error}</Alert> : <div></div>}
                         <ModalBody>
                             <Form onSubmit={submitHandler}>
                                 <FormGroup className="formgroup">
@@ -78,7 +85,7 @@ const SignUpModal = (props) => {
                                     <Label for="ConfirmPassword">Confirm Password</Label>
                                     <Input type="password" name="confirmpassword" id="ConfirmPassword" placeholder="Confirm Password" innerRef={passwordConfirmRef} required />
                                 </FormGroup>
-                                <Button type="submit" color="primary">Submit</Button>                                                                                    
+                                <Button type="submit" disable={loading} color="primary">Submit</Button>                                                                                    
                             </Form>
                         </ModalBody>
                         <ModalFooter>

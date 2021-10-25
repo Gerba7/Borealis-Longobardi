@@ -1,11 +1,8 @@
-import { useContext } from 'react';
-import UserContext from '../context/CartContext';
+
 
 
 const FavoritesDetail = ({fav}) => {
-
-    const { removeFavs, favorites } = useContext(UserContext)
-
+    
     
 
 
@@ -17,11 +14,8 @@ const FavoritesDetail = ({fav}) => {
                         <img className="cartimg" src={fav.pictureUrl} alt={fav.title} />
                     </div>
                     <div className="col-5">
-                        <h3>{fav.title}</h3>
+                        <h3 style={{ textAlign: "center"}}>{fav.title}</h3>
                         <p>{fav.description}</p>
-                    </div>
-                    <div className="col-4">
-                    <button >Rem fav</button>
                     </div>
                 </div>                                           
             </div>           

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { db } from '../services/firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { Spinner } from 'reactstrap';
+import { Spinner, Container, Row } from 'reactstrap';
 
 
 const ItemListContainer = () => {
@@ -33,13 +33,11 @@ const ItemListContainer = () => {
     }
 
     return(
-        <div className="container">
-            <div className="row">
-                <div className="col-12 col-sm-12 col-md-4 col-lg-4">
-                    <ItemList beers={listBeer} />
-                </div>
-            </div>
-        </div>
+        <Container>
+            <Row>
+                <ItemList beers={listBeer} />                    
+            </Row>
+        </Container>
     )
 
     

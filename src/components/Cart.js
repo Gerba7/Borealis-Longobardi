@@ -4,29 +4,29 @@ import CartContext from '../context/CartContext';
 import CartDetail from './CartDetail';
 import { Timestamp, collection, addDoc, getDoc, doc, writeBatch } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import UserContext from '../context/UserContext';
+import LoginModal from './LoginModal';
+import { Alert } from 'reactstrap'
 
 
 const Cart = () => {
 
     const { products, totalQuantity, totalPrice, clear } = useContext(CartContext)
     const [total,setTotal] = useState()
-    const [orderId, setOrderId] = useState()
+    const [error, setError] = useState('') 
+    const { currentUser } = useContext(UserContext)
 
 
     useEffect(() => {
         setTotal(totalPrice())
     }, [totalPrice])
 
-    const confirmOrder = () => { /*currentUser ?*/
+    const confirmOrder = () => { 
 
-        const user = {
-            name: 'Pepe',
-            phone: 111-111111,
-            email: 'pepe21@gmail.com'
-        }
+        if(currentUser) {
 
         const objOrder = {
-            buyer: user,
+            buyer: currentUser,
             items: products,
             total: total,
             date: Timestamp.fromDate(new Date())
@@ -54,24 +54,40 @@ const Cart = () => {
                 setTotal(0)
                 clear()
                 console.log('success')
+                setError('')
             })
-        } /* : */ 
+        }
+
+        } else {
+            setError('You must be loged In')
+            
+        }
 
     }
 
 
     return(
         <div>
-        <h2 className="text-center">Empty Cart :(</h2>
-        { totalQuantity() === 0 ? <NavLink to="/itemlist" activeClassName="navLink" className="Option"><button color="light">Add items to Cart</button></NavLink> :
+        
+        {error && <Alert>{error}</Alert>}
+        { totalQuantity() === 0 ? 
+        
+        <div>
+            <h2 className="text-center">Empty Cart :(</h2>
+            <NavLink to="/itemlist" activeClassName="navLink" className="Option"><button color="light">Add items to Cart</button></NavLink>
+        </div> :
+
         <div>
             <h1>Cart</h1>
             <div className="">
                 {products.map(prod => <CartDetail prod={prod} key={prod.id} />)}
             </div>
             <div className="center">
-                <button className="btn btn-danger" onClick={() => clear()}>Clear Cart</button>
-                <NavLink to="/checkout"><button className="btn btn-success" onClick={() => confirmOrder()}>Confirm Order</button></NavLink>
+                <button className="btn btn-danger" onClick={() => clear()}>Clear Cart</button>                
+                { currentUser ? <button className="btn btn-success" onClick={() => confirmOrder()}>Confirm Order</button> : 
+                <button className="btn btn-success" disabled onClick={() => confirmOrder()}>Confirm Order</button>
+                }
+                <LoginModal />
             </div>
             <div className="center">
                 <h3>Total: ${total}</h3>

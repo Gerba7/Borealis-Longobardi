@@ -1,19 +1,24 @@
-import React, { useState } from 'react'; 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button } from 'reactstrap';
+import React, { useState, useContext } from 'react'; 
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
 import CartWigdet from './CartWidget';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faStar } from '@fortawesome/free-solid-svg-icons';
 import LoginModal from './LoginModal';
+import UserContext from '../context/UserContext';
 
 
 
 const NavBar = () => {
 
     const [isOpen,setIsOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false)
     
 
     const toggle = () => setIsOpen(!isOpen)
+    const toggleDropdown = () => setDropdownOpen(prevState => !prevState)
+
+    const { currentUser, logOut } = useContext(UserContext)
 
     
 
@@ -26,7 +31,7 @@ const NavBar = () => {
                             </NavbarToggler>
                             <NavbarBrand>
                                 <Link to="/"> 
-                                    <img id="logo" alt="Aca va a ir el Logo"/>
+                                    <img id="logo" src="/assets/borealislogo2.png" alt="Aca va a ir el Logo"/>
                                 </Link>
                             </NavbarBrand>
                             <Collapse className="justify-content-center" isOpen={isOpen} navbar> 
@@ -34,10 +39,23 @@ const NavBar = () => {
                                     <NavLink to="/aboutus" className="Option"><Button outline color="light">About Us</Button></NavLink>
                                     <NavLink to="/styles" className="Option"><Button outline color="light">Styles</Button></NavLink>
                                     <NavLink to="/itemlist" className="Option"><Button outline color="light">Buy</Button></NavLink>
-                                    <NavLink to="/contactus" className="Option"><Button outline color="light">Contact Us</Button></NavLink>                        
+                                    <NavLink to="/contactus" className="Option"><Button outline color="light">Contact Us</Button></NavLink>
+                                    { currentUser ? 
+                                    <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+                                        <DropdownToggle caret>
+                                        Hi {currentUser.userName}!
+                                        </DropdownToggle>
+                                            <DropdownMenu>
+                                            <DropdownItem header>User</DropdownItem>
+                                            <DropdownItem>My Profile</DropdownItem>
+                                            <DropdownItem disabled>Orders History</DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem onClick={logOut}>Log Out</DropdownItem>
+                                            </DropdownMenu>
+                                    </Dropdown>
+                                    : <LoginModal />}                        
                                 </Nav>
-                            </Collapse>
-                            <LoginModal />
+                            </Collapse>                            
                             <NavLink to="/favorites" className="favswidget"><FontAwesomeIcon className="toggle" color="white" icon={faStar} size="lg" /></NavLink>
                             <NavLink to="/cart" className="cartwidgetm"><CartWigdet /></NavLink>                                                
                     </Navbar>

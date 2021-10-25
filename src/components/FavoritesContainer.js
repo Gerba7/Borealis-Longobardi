@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
-import { Timestamp, setDoc, getDoc, doc, updateDoc, arrayUnion, arrayRemove, collection } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import Favorites from './Favorites';
 import { Spinner } from 'reactstrap';
@@ -19,13 +19,16 @@ const FavoritesContainer = () => {
     
     useEffect(() => {
         const favt = []
-        if (currentUser) {        
-        favorites.forEach(fav => {
-        getDoc(doc(db, 'Productos', fav)).then(result => {
-            favt.push({...result.data(), id: result.id})
-            setDisplayFavorites(favt)
-        })
-    })
+        if (currentUser && favorites) {        
+        Promise.all(favorites.map(fav => {
+            return new Promise((resolve,reject) => {
+                getDoc(doc(db, 'Productos', fav)).then(result => {
+                    const product = {...result.data(), id: result.id}
+                    resolve(product)
+                })
+            })
+            
+    })).then(result => setDisplayFavorites(result))
     } else {
         console.log('Empty Favorites')
     }   
